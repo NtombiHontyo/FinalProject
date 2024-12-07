@@ -8,6 +8,7 @@
   },
   "author": "Ntombi Hontyo",
   "dependencies": {
+    "finalproject": "file:",
     "parcel": "^2.13.2",
     "prettier": "^3.4.2"
   }

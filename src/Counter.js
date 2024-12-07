@@ -1,6 +1,6 @@
 import { createElement } from "./utils";    
 
-export  function Counter() {
+export default  function Counter() {
     function updateCount(element, count) {
         element.textContent = count;
     }
