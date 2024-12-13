@@ -16,3 +16,26 @@ export function createElement(type, props = {}, children = []) {
 
     return element
 }
+export function getParams(paramName) {
+    const hash = window.location.hash; // "#/propertylist?suburb=Cambridge"
+    const query = hash.split('?')[1];
+    const urlParams = new URLSearchParams(query);
+    const suburbName = urlParams.get(paramName);
+  
+    return suburbName;
+}
+
+export function renderListWithTemplate(
+    templateFn,
+    parentElement,
+    list,
+    position = "afterBegin",
+    clear = false,
+  ) {
+    if (clear) {
+      parentElement.innerHTML = "";
+    }
+    const htmlStrings = list.map(templateFn);
+    parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+  }
+

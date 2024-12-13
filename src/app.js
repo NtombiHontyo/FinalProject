@@ -3,28 +3,33 @@ import { initRouter } from "./router";
 
 
 function Header(mainDiv) {
-    const appTitle = createElement("h1", {textContent: "My Cool Project", className: "heading"}) ;
+    const imageLogo = createElement("img", {
+        src: "https://raw.githubusercontent.com/NtombiHontyo/images/main/el%20Prop.png", 
+        alt: "image logo", 
+        className: "img-logo"
+    }); 
+    const homePage = createElement("a", { href: "/#/page1"}, [imageLogo])
+       
+    const appTitle =  createElement("div", {}, 
+        [homePage]);
 
     //nav Items
-    const page1 = createElement("a", {
-        href: "/#/page1", 
-        textContent: "Page 1 "
+    const heart = createElement("span", { 
+        textContent: "0 ",
+        className: "wishlistNumber"
     });
-    const page2 = createElement("a", {
-        href: "/#/page2", 
-        textContent: "Page 2 "
-    });
-    const page3 = createElement("a", {
-        href: "/#/page3", 
-        textContent: "Page 3 "
-    });
+    const wishList = createElement("a", {
+        href: "/#/favourites", 
+        textContent: "Wishlist: "
+    }, [heart]);
+    
 
-    const nav = createElement("nav", {}, [page1, page2, page3]);
+    const nav = createElement("nav", {}, [wishList]);
 
     return createElement("header", {}, [appTitle, nav]);
 }
 function Footer() {
-    const copyright = createElement("span", {innerHTML: `Copyright &copy; ${new Date().getFullYear()}`})
+    const copyright = createElement("span", {innerHTML: `Copyright &copy; ${new Date().getFullYear()}`, className: "spanFooter"})
     return createElement("footer", {}, [copyright]);
 }
 export function App() {

@@ -1,12 +1,76 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+#root {
+    width: 75vw ;
+    margin: 0 auto;
+    font-family: "Rethink Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 4px solid #fcb1a6 ;
 }
-footer {
+header nav a {
+    text-decoration: none;
+    font-family: "Rethink Sans", serif;
+    font-size: 1.2rem;
+    color: #233d4d;
+}
+header nav span {
+    font-weight: 700;
+    background-color: rgba(0, 0, 255, 0.3);
+    padding: 0.3rem;
+    border-radius: 1.3rem;
+}
+.banner {
+    width: 75vw;
+    height: 60vh;
+}
+.home-para {
     text-align: center;
-    padding: 16px;
+    margin:  4rem;
+    line-height: 2rem;
+    font-size: 1.2rem;
 }
+section img {
+    width: 30vw;
+    height: 45vh;
+    border-radius: 0.5rem 0.5rem 0 0 ;
+}
+section ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+section li {
+    border-radius: 0.5rem 0.5rem 0 0 ;
+    box-shadow: 5px 5px 10px #E5F4E3;
+}
+section li h2 {
+    text-align: center;
+}
+section a {
+    text-decoration: none;
+    color: #233d4d;
+}
+
+footer {
+    border-top: 2px solid #fcb1a6 ;
+    text-align: center;
+    padding: 16px;  
+}
+.spanFooter {
+    font-family: "Rethink Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
 nav  {
     display: flex;
     gap: 8px;
@@ -30,3 +94,81 @@ nav  {
     margin-bottom: 8px;
     text-align: center;
 }
+.img-logo {
+    width:15vw ;
+}
+/* propert list page */
+.listul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    gap: 20px;
+}
+.property-card {
+    width: 35vw;
+    border-radius: 0.5rem  0 0 0.5rem;
+    box-shadow: 5px 5px 10px #E5F4E3;
+}
+.property-card div {
+    padding-left: 1rem;
+}
+.listul a {
+    color: #233d4d;
+    display: flex;
+    text-decoration: none;
+}
+.listul img {
+    width: 20vw;
+    height: 15vw;
+    border-radius: 0.5rem  0 0 0.5rem;
+}
+
+
+/* property details page */
+.slider {
+    position: relative;
+  }
+  .slider img {
+    display: none;
+  }
+  img.displaySlide {
+    display: block;
+  }
+  .slide {
+    margin: 0 auto;
+    margin-top: 1rem;
+    width: 60vw;
+    border-radius: 2rem;
+  }
+  .detail-card {
+    margin: 0 auto;
+    width: 60vw;
+    border-radius: 2rem;
+    box-shadow: 5px 5px 10px #E5F4E3;
+    padding: 2rem;
+    color: #233d4d;
+  }
+  .detail-card button {
+    font-size: 1.5rem;
+    border-radius: 1.5rem;
+    background-color: #fcb1a6;
+    color: white;
+    border-color: #fcb1a6;
+    font-family: "Rethink Sans", serif;
+  }
+  .top-desc {
+    display: flex; 
+    justify-content: space-between;
+  }
+  .heartwish {
+    font-size: 2rem;
+  }
+  .estate {
+    display: flex;
+    justify-content: space-between;
+  }
+  .bond {
+    display: flex;
+    justify-content: space-between;
+  }
