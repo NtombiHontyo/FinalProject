@@ -1,4 +1,4 @@
-import { createElement, getParams } from "./utils";
+import { createElement, getParams,setLocalStorage, getLocalStorage } from "./utils";
 import Page1 from "./page1";
 import Counter from "./Counter";
 import Page3 from "./page3";
@@ -45,6 +45,20 @@ function carousel() {
     }
   }
 
+  function addProductToCart(product) {
+      setLocalStorage("favourites", product);
+  }
+  
+  async function addToCartHandler(e) {
+      const productss = getLocalStorage("favourites")
+        ? getLocalStorage("favourites")
+        : [];
+      const product = await getDataDetails(e.target.dataset.id);
+      productss.push(product);
+      addProductToCart(productss);
+    }
+
+
 
 export function initRouter(mainView) {
     function updateView(newView) {
@@ -84,11 +98,15 @@ export function initRouter(mainView) {
             break;
             case `#/propertyDetails?id=${id}`: 
             updateView(await propertDetails());
-            carousel()
+            carousel();
+
+            document
+            .getElementById("addToFav")
+            .addEventListener("click", addToCartHandler);
             break;
 
             case "#/favourites": 
-            updateView(favouriteList());
+            updateView( await favouriteList());
             break;
 
             default:

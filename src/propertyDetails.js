@@ -1,4 +1,4 @@
-import { createElement,  getParams} from "./utils";
+import { createElement,  getParams, setLocalStorage, getLocalStorage} from "./utils";
 import getDataDetails from "./dataOne";
 
 
@@ -20,7 +20,7 @@ function propertyDetailsTemplate(house) {
                 <h3>${house.smallDesc}</h3>
                 <h3>${house.suburb}</h3>
             </div>
-            <div class="heartwish"><button>🩶</button></div>
+            <div class="heartwish"><button id="addToFav" data-id="${house.id}">🩶</button></div>
         </section>
         <div class="detail-card">
             <p>${house.desc}</p>
@@ -56,6 +56,8 @@ function propertyDetailsTemplate(house) {
     `
 }
 
+
+
 async function propertDetails() {
     const onePropertyId = getParams("id")
     const onePropertyData = await getDataDetails(onePropertyId);
@@ -64,7 +66,11 @@ async function propertDetails() {
     
     const house = onePropertyData[0];
     const detailsTemp = propertyDetailsTemplate(house)
+
+    
+
     return createElement("div", {innerHTML: detailsTemp})
+    
 }
 
 export default propertDetails
