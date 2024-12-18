@@ -46,11 +46,12 @@ function propertyDetailsTemplate(house) {
                 <p>Deposit(Optional) : <span><input type="number" name="depo" id="depo" class="underline" value=0></span></p>
                 <p>Interest Rate: <span><input type="number" name="interest" id="rate" class="underline" ></span></p>
                 <p>Loan Term: <span><input type="number" name="term" id="term" class="underline" ></span></p>
+                <button id="calculateAmounts" >Calculate</button>
             </div>
             <div>
-                <p>Monthly Payment: <span id="payment"></span></p>
-                <p>Total Once-off Costs: <span id="once-off"></span> </p>
-                <p>Min Gross Monthly Income:  <span id="income"></span></p>
+                <p>Monthly Payment: <strong>R<span id="payment"></span></strong></p>
+                <p>Total Once-off Costs: <strong>R<span id="once-off"></span></strong> </p>
+                <p>Min Gross Monthly Income: <strong>R<span id="income"></span></strong></p>
             </div>
         </section>
     `

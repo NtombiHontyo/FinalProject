@@ -76,19 +76,57 @@ function carousel() {
       countCartItems()
     }
 
-// function calculateMonthlyRepayment(p, d, r, t) {
-//   return p + d + r + t
-// }
+    function displayOnceOff(p) {
+      const onceOff = document.querySelector("#once-off")
+  
+      return onceOff.innerHTML = (p / 15).toFixed(2);
+  
+  }
+  
+  function minumumGrossIncome(p) {
+      const minGross = document.querySelector("#income")
+  
+      return minGross.innerHTML = (p / 35).toFixed(2)
+  }
+  // (p * (r(1 + r)**n) / ((1 + r)**n) - 1)
+  function displayAmounts() {
+    
+      const monthly = document.querySelector("#payment")
+      
+      const price = document.querySelector("#price").value;
+      const priceNumber = parseFloat(price)
+      const depo = document.querySelector("#depo").value;
+      const depoNumber = parseFloat(depo)
+      const rate = document.querySelector("#rate").value;
+      const rateNumber = parseFloat(rate);
+      const term = document.querySelector("#term").value;
+      const termNumber = parseFloat(term);
+  
+  
+      const p = priceNumber - depoNumber;
+      const r = (rateNumber) / (12 * 100);
+      const n = termNumber * 12;
+  
+      const numa = r * (1 + r)**n;
+      const deno = ((1 + r)**n) - 1;
+  
+      const monthlyRep = p * (numa / deno)
+  
+  
+      const monthlyRepayment = monthlyRep;
+      
+  
+      displayOnceOff(p)
+      minumumGrossIncome(p)
+  
+      return monthly.innerHTML = monthlyRepayment.toFixed(2);
+      
+  } 
 
-// function displayMonthRep() {
-//   const price = document.querySelector("#price");
-//   const depo = document.querySelector("#depo");
-//   const rate = document.querySelector("#rate");
-//   const term = document.querySelector("#term");
-
-//   const monthRep = document.querySelector("#payment")
-//   monthRep.innerHTML = calculateMonthlyRepayment(price, depo, rate, term)
-// }
+  async function alert() {
+    alertMessage("Message Sent to Agents!")
+  }
+    
 
 
 export function initRouter(mainView) {
@@ -130,6 +168,8 @@ export function initRouter(mainView) {
             case `#/propertyDetails?id=${id}`: 
             updateView(await propertDetails());
             carousel();
+            document.getElementById("calculateAmounts").addEventListener("click", displayAmounts)
+         
 
             document
             .getElementById("addToFav")
@@ -142,7 +182,8 @@ export function initRouter(mainView) {
             break;
 
             case "#/form": 
-            updateView(form());
+            updateView(await form());
+            document.getElementById("sendToAgent").addEventListener("click", alert)
             break;
 
             default:

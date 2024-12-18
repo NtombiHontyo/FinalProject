@@ -16,7 +16,7 @@ function formTemplate() {
             <textarea name="" id="" placeholder="Your Message Here"></textarea>
         </div>
         <div class="input-wrapper">
-            <button>Send To Agent</button>
+            <button id="sendToAgent">Send To Agent</button>
         </div>`
 }
 
