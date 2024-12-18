@@ -172,3 +172,46 @@ nav  {
     display: flex;
     justify-content: space-between;
   }
+  .input-wrapper {
+    position: relative;
+    display: inline-block;
+}
+.input-wrapper i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+.input-wrapper input {
+    padding-left: 35px;
+    height: 36px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 5px;
+}
+.input-wrapper textarea {
+    height: 70px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 5px;
+}
+.forminputs {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+input:invalid {
+    border-left: 2px solid red;
+}
+input:valid {
+    border-left: 2px solid green;
+}
+.input-wrapper button {
+    font-size: 1.5rem;
+    border-radius: 1.5rem;
+    background-color: #fcb1a6;
+    color: white;
+    border-color: #fcb1a6;
+    font-family: "Rethink Sans", serif;
+  }

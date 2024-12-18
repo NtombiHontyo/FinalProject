@@ -18,13 +18,14 @@ function favouriteListTemplate(propertyd) {
    `;
 }
 
-function favouriteList() {
+async function favouriteList() {
     const title = createElement("h2", {textContent: "My favourites"})
 
     const favItems = getLocalStorage("favourites");
-    const htmlItems = favItems.map((item) => favouriteListTemplate(item));
+    const htmlItems = favItems.map((item) => favouriteListTemplate(item)); 
 
-    const unorderedList = createElement("ul", {className: "favouritelist"}, [htmlItems.join("")])
+    const unorderedList = createElement("ul", {className: "favouritelist", innerHTML: htmlItems.join("")} )
+    console.log(favItems)
 
     return createElement("section",{}, [title, unorderedList])
 }

@@ -36,7 +36,7 @@ function propertyDetailsTemplate(house) {
                 <h4>Company: ${house.estateAgent.Company} </h4>
                 <h4>Agent: ${house.estateAgent.Estate_Agent_Name}</h4>
                 <h4>Number: ${house.estateAgent.Contact_info}</h4>
-                <button>Contact Agent</button>
+                <button><a href="#/form">Contact Agent</a></button>
             </div>
         </section>
         <section class="detail-card bond">

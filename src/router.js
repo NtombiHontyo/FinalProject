@@ -6,6 +6,9 @@ import PropertyList from "./propertylist";
 import propertDetails from "./propertyDetails";
 import getDataDetails from "./dataOne";
 import favouriteList from "./favorites";
+import form from "./form";
+
+
 
 function carousel() {
     const slides = document.querySelectorAll(".slides img");
@@ -45,7 +48,7 @@ function carousel() {
     }
   }
 
-  function addProductToCart(product) {
+  async function addProductToCart(product) {
       setLocalStorage("favourites", product);
   }
   
@@ -54,7 +57,9 @@ function carousel() {
         ? getLocalStorage("favourites")
         : [];
       const product = await getDataDetails(e.target.dataset.id);
-      productss.push(product);
+      const prodWOArray = product[0]
+      productss.push(prodWOArray);
+      
       addProductToCart(productss);
     }
 
@@ -107,6 +112,10 @@ export function initRouter(mainView) {
 
             case "#/favourites": 
             updateView( await favouriteList());
+            break;
+
+            case "#/form": 
+            updateView(form());
             break;
 
             default:

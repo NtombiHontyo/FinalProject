@@ -1,6 +1,16 @@
-import { createElement } from "./utils";
+import { createElement, getLocalStorage } from "./utils";
 import { initRouter } from "./router";
 
+function countFavItems() {
+    const housesInFav = getLocalStorage("favourites");
+    const totalNoOfItem = housesInFav.length;
+  
+    const numberInHtml = document.getElementsByClassName("wishlistNumber");
+  
+    if (numberInHtml) {
+      return totalNoOfItem;
+    }
+  }
 
 function Header(mainDiv) {
     const imageLogo = createElement("img", {
@@ -15,8 +25,8 @@ function Header(mainDiv) {
 
     //nav Items
     const heart = createElement("span", { 
-        textContent: "0 ",
-        className: "wishlistNumber"
+        className: "wishlistNumber",
+        textContent: countFavItems()
     });
     const wishList = createElement("a", {
         href: "/#/favourites", 
@@ -25,6 +35,7 @@ function Header(mainDiv) {
     
 
     const nav = createElement("nav", {}, [wishList]);
+
 
     return createElement("header", {}, [appTitle, nav]);
 }
@@ -37,6 +48,7 @@ export function App() {
     const main = createElement("main", {}, []);
 
     initRouter(main)
-
+   
+    countFavItems()
     return createElement("div", {}, [Header(main), main, Footer()]);
 }
