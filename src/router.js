@@ -1,4 +1,4 @@
-import { createElement, getParams,setLocalStorage, getLocalStorage } from "./utils";
+import { createElement, getParams,setLocalStorage, getLocalStorage, alertMessage } from "./utils";
 import Page1 from "./page1";
 import Counter from "./Counter";
 import Page3 from "./page3";
@@ -7,6 +7,7 @@ import propertDetails from "./propertyDetails";
 import getDataDetails from "./dataOne";
 import favouriteList from "./favorites";
 import form from "./form";
+import { doc } from "prettier";
 
 
 
@@ -47,9 +48,20 @@ function carousel() {
       showSlide(slideIndex);
     }
   }
+  function countCartItems() {
+    const housesInFav = getLocalStorage("favourites");
+    const totalNoOfhouses = housesInFav.length;
+  
+    const numberInHtml = document.querySelector(".wishlistNumber");
+  
+    if (totalNoOfhouses > 0) {
+      numberInHtml.innerHTML = totalNoOfhouses;
+    } else numberInHtml.innerHTML = 0
+  }
 
   async function addProductToCart(product) {
       setLocalStorage("favourites", product);
+      alertMessage(`${product[0].smallDesc} added to Favourites!`);
   }
   
   async function addToCartHandler(e) {
@@ -61,8 +73,22 @@ function carousel() {
       productss.push(prodWOArray);
       
       addProductToCart(productss);
+      countCartItems()
     }
 
+// function calculateMonthlyRepayment(p, d, r, t) {
+//   return p + d + r + t
+// }
+
+// function displayMonthRep() {
+//   const price = document.querySelector("#price");
+//   const depo = document.querySelector("#depo");
+//   const rate = document.querySelector("#rate");
+//   const term = document.querySelector("#term");
+
+//   const monthRep = document.querySelector("#payment")
+//   monthRep.innerHTML = calculateMonthlyRepayment(price, depo, rate, term)
+// }
 
 
 export function initRouter(mainView) {
@@ -108,6 +134,7 @@ export function initRouter(mainView) {
             document
             .getElementById("addToFav")
             .addEventListener("click", addToCartHandler);
+            // displayMonthRep();
             break;
 
             case "#/favourites": 

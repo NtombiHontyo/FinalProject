@@ -12,7 +12,7 @@ const baseURL = process.env.PARCEL_API_URL;
 export default async  function getData(suburb) {
     const response = await fetch(`${baseURL}?suburb=${suburb}`);
     const data = await convertToJson(response);
-    console.log(baseURL)
+   
     return data;
   }
  

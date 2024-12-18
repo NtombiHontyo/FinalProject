@@ -48,3 +48,18 @@ export function getLocalStorage(key) {
     localStorage.setItem(key, JSON.stringify(data));
   }
 
+  export function alertMessage(message, scroll = true) {
+    const alert = document.createElement("div");
+    const main = document.querySelector("main");
+    alert.classList.add("alert");
+    alert.innerHTML = `<p>${message}</p><span>X</span>`;
+  
+    alert.addEventListener("click", function (e) {
+      if (e.target.tagName == "SPAN") {
+        main.removeChild(this);
+      }
+    });
+    main.prepend(alert);
+    if (scroll) window.scrollTo(0, 0);
+  }
+

@@ -1,16 +1,16 @@
 import { createElement, getLocalStorage } from "./utils";
 import { initRouter } from "./router";
 
-function countFavItems() {
-    const housesInFav = getLocalStorage("favourites");
-    const totalNoOfItem = housesInFav.length;
+// function countFavItems() {
+//     const housesInFav = getLocalStorage("favourites");
+//     const totalNoOfItem = housesInFav.length;
   
-    const numberInHtml = document.getElementsByClassName("wishlistNumber");
+//     const numberInHtml = document.getElementsByClassName("wishlistNumber");
   
-    if (numberInHtml) {
-      return totalNoOfItem;
-    }
-  }
+//     if (numberInHtml) {
+//       return totalNoOfItem;
+//     }
+//   }
 
 function Header(mainDiv) {
     const imageLogo = createElement("img", {
@@ -24,9 +24,19 @@ function Header(mainDiv) {
         [homePage]);
 
     //nav Items
+    let count = 0
+    const housesInFav = getLocalStorage("favourites");
+    
+    if (housesInFav ) {
+        const totalNoOfhouses = housesInFav.length;
+        count = totalNoOfhouses
+    } else {
+        count = 0
+    }
     const heart = createElement("span", { 
+       
         className: "wishlistNumber",
-        textContent: countFavItems()
+        textContent: count
     });
     const wishList = createElement("a", {
         href: "/#/favourites", 
@@ -49,6 +59,6 @@ export function App() {
 
     initRouter(main)
    
-    countFavItems()
+    // countFavItems()
     return createElement("div", {}, [Header(main), main, Footer()]);
 }

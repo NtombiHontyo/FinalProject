@@ -40,17 +40,17 @@ function propertyDetailsTemplate(house) {
             </div>
         </section>
         <section class="detail-card bond">
+        <h3>Bond Calculator</h3>
             <div>
-                <h3>Bond Calculator</h3>
-                <p>Purchase Price: <span></span></p>
-                <p>Deposit(Optional) : <span></span></p>
-                <p>Interest Rate: <span></span></p>
-                <p>Loan Term: <span></span></p>
+                <p>Purchase Price: <span><input type="number" name="price" id="price" class="underline" value=${house.price}></span></p>
+                <p>Deposit(Optional) : <span><input type="number" name="depo" id="depo" class="underline" value=0></span></p>
+                <p>Interest Rate: <span><input type="number" name="interest" id="rate" class="underline" ></span></p>
+                <p>Loan Term: <span><input type="number" name="term" id="term" class="underline" ></span></p>
             </div>
             <div>
-                <p>Monthly Payment: <span></span></p>
-                <p>Total Once-off Costs: <span></span> </p>
-                <p>Min Gross Monthly Income:  <span></span></p>
+                <p>Monthly Payment: <span id="payment"></span></p>
+                <p>Total Once-off Costs: <span id="once-off"></span> </p>
+                <p>Min Gross Monthly Income:  <span id="income"></span></p>
             </div>
         </section>
     `
@@ -61,8 +61,7 @@ function propertyDetailsTemplate(house) {
 async function propertDetails() {
     const onePropertyId = getParams("id")
     const onePropertyData = await getDataDetails(onePropertyId);
-    console.log(onePropertyData);
-    console.log(onePropertyData[0].id)
+    
     
     const house = onePropertyData[0];
     const detailsTemp = propertyDetailsTemplate(house)

@@ -26,8 +26,7 @@ function propertyCardTemplate(propertyd){
     const propertyDatailList = await getData(suburb)
      let list = []
      list.push(propertyDatailList)
-     console.log(list);
-     console.log(list[0]);
+     
      
      const propertyList = list[0].map(property => 
         propertyCardTemplate(property)   
